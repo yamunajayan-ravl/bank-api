@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"encoding/json"
 )
 
 func accountsHandler(w http.ResponseWriter, r *http.Request) {
