@@ -22,17 +22,7 @@ func main() {
 	http.HandleFunc("/", welcomeHandler)
 
 	http.HandleFunc("/health", healthHandler)
-	
-	http.HandleFunc("/accounts", func(w http.ResponseWriter, r *http.Request) {
-		switch r.Method {
-		case http.MethodPost:
-			createAccountHandler(w, r)
-		case http.MethodGet:
-			getAccountHandler(w, r)
-		default:
-			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		}
-	})
+	http.HandleFunc("/accounts", accountsHandler)
 
 	fmt.Println("Starting Bank API server on port 8080...")	
 	http.ListenAndServe(":8080", nil)
