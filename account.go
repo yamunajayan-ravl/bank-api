@@ -1,8 +1,9 @@
 package main
 
 type Account struct {
-	ID      string
-	Name    string
-	Balance float64
-	Cards   int
+	ID      string  `json:"id"`
+	Name    string  `json:"name"`
+	Balance float64 `json:"balance"`
+	Cards   int     `json:"cards"`
 }
+
