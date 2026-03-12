@@ -19,6 +19,11 @@ func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	err := loadAccounts()
+	if err != nil {
+		fmt.Println("could not load accounts:", err)
+	}
+
 	http.HandleFunc("/", welcomeHandler)
 
 	http.HandleFunc("/health", healthHandler)

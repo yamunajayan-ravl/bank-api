@@ -19,9 +19,7 @@ func accountsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-
 func createAccountHandler(w http.ResponseWriter, r *http.Request) {
-
 
 	var newAccount Account
 
@@ -32,14 +30,17 @@ func createAccountHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	addAccount(newAccount)
+	err = addAccount(newAccount)
+	if err != nil {
+		http.Error(w, "Failed to save account", http.StatusInternalServerError)
+		return
+	}
 	writeJSON(w, newAccount)
 }
 
 func getAccountHandler(w http.ResponseWriter, r *http.Request) {
 
 	accounts := getAllAccounts()
-	
+
 	writeJSON(w, accounts)
 }
-	
