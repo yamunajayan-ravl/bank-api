@@ -4,5 +4,11 @@
     "name": "Alice",
     "balance": 1000,
     "cards": 2
+  },
+  {
+    "id": "2",
+    "name": "Bob",
+    "balance": 2000,
+    "cards": 2
   }
 ]

@@ -40,7 +40,11 @@ func createAccountHandler(w http.ResponseWriter, r *http.Request) {
 
 func getAccountHandler(w http.ResponseWriter, r *http.Request) {
 
-	accounts := getAllAccounts()
+	accounts, err := getAllAccounts()
+	if err != nil {
+		http.Error(w, "Failed to retrieve accounts", http.StatusInternalServerError)
+		return
+	}
 
 	writeJSON(w, accounts)
 }

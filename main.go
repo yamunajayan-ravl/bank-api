@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"sync"
+	"github.com/joho/godotenv"
 )
 
 var accounts = make(map[string]Account)
@@ -19,10 +20,13 @@ func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+
+	godotenv.Load()
 	err := loadAccounts()
 	if err != nil {
 		fmt.Println("could not load accounts:", err)
 	}
+	initDB()
 
 	http.HandleFunc("/", welcomeHandler)
 
