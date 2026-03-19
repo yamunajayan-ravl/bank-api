@@ -30,7 +30,7 @@ func createAccountHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = addAccount(newAccount)
+	err = addAccount(&newAccount)
 	if err != nil {
 		http.Error(w, "Failed to save account", http.StatusInternalServerError)
 		return

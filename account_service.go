@@ -1,14 +1,13 @@
 package main
 
-func addAccount(acc Account) error {
+func addAccount(acc *Account) error {
 
 	query := `
-	INSERT INTO accounts (id, name, balance, cards)
-	VALUES ($1, $2, $3, $4)
+	INSERT INTO accounts (name, balance, cards)
+	VALUES ($1, $2, $3)
+	RETURNING id
 	`
-
-	_, err := db.Exec(query, acc.ID, acc.Name, acc.Balance, acc.Cards)
-	return err
+	return db.QueryRow(query, acc.Name, acc.Balance, acc.Cards).Scan(&acc.ID)
 }
 
 

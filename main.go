@@ -7,7 +7,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var accounts = make(map[string]Account)
+var accounts = make(map[int]Account)
 var mu sync.RWMutex
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		panic("Error loading .env file")
 	}
-	
+
 	initDB()
 
 	http.HandleFunc("/", welcomeHandler)
