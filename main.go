@@ -20,12 +20,11 @@ func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-
-	godotenv.Load()
-	err := loadAccounts()
+	err :=godotenv.Load()
 	if err != nil {
-		fmt.Println("could not load accounts:", err)
+		panic("Error loading .env file")
 	}
+	
 	initDB()
 
 	http.HandleFunc("/", welcomeHandler)

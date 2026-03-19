@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"os"
+	"fmt"
 
 	_ "github.com/lib/pq"
 )
@@ -14,6 +15,7 @@ func initDB() {
 	var err error
 
 	connStr := os.Getenv("DB_CONN")
+	fmt.Println("DB_CONN:", connStr)
 
 	db, err = sql.Open("postgres", connStr)
 	if err != nil {
