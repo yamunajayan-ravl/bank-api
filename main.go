@@ -11,12 +11,14 @@ var accounts = make(map[int]Account)
 var mu sync.RWMutex
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Bank API is healthy!")
+	fmt.Fprintln(w, "Bank API is healthy!") 
+	
 }
 
 func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome to the Bank API!")
 }
+
 
 func main() {
 
