@@ -33,6 +33,8 @@ func main() {
 
 	http.HandleFunc("/health", healthHandler)
 	http.HandleFunc("/accounts", accountsHandler)
+	http.HandleFunc("/register", registerHandler)
+	http.HandleFunc("/login", loginHandler)
 
 	fmt.Println("Starting Bank API server on port 8080...")	
 	http.ListenAndServe(":8080", nil)
